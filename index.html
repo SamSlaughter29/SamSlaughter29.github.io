@@ -1,0 +1,1616 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samuel Slaughter — Persönlicher Markenbotschafter &amp; Drinks-Stratege · Berlin</title>
+<meta name="description" content="Unabhängiger Drinks-Stratege, der sechs Produzenten mit chirurgischer Präzision in Berlins und DACHs Luxushotels und Restaurants platziert.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Archivo:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:ital,wght@0,300..600;1,300..600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* warm honeyed paper — canyon in sunlight */
+    --bg:         #f2dcb3;
+    --bg-soft:    #edd3a6;
+    --bg-elev:    #e6c892;
+    --bg-card:    #f7e6c1;
+
+    /* ink stack — deep espresso on paper */
+    --ink:        #2a1608;
+    --ink-soft:   #4a2a14;
+    --ink-mute:   #8a6a4a;
+    --ink-faint:  #a6886a;
+
+    /* ember / rust accents — deepened so they read on cream */
+    --ember:      #c74a15;
+    --ember-hi:   #e06a2a;
+    --ember-lo:   #8a2f0e;
+    --rust:       #6f1d07;
+    --rust-deep:  #4a1305;
+
+    /* rules + shadow */
+    --rule:       rgba(42, 22, 8, 0.16);
+    --rule-soft:  rgba(42, 22, 8, 0.08);
+    --rule-ember: rgba(199, 74, 21, 0.35);
+    --shadow:     0 30px 60px -20px rgba(74, 30, 10, 0.25);
+
+    --max: 1280px;
+    --gutter: clamp(20px, 4vw, 64px);
+    --serif: "Fraunces", "Times New Roman", serif;
+    --sans:  "Archivo", ui-sans-serif, system-ui, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  /* motion keyframes used throughout */
+  @keyframes stageIn {
+    from { opacity: 0; transform: translateY(26px); filter: blur(3px); }
+    to   { opacity: 1; transform: translateY(0);     filter: blur(0); }
+  }
+  @keyframes stageInSoft {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes drawStroke {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes slowFloat {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1.08); }
+    50%      { transform: translate3d(0, -8px, 0) scale(1.10); }
+  }
+
+  /* respect users who asked for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: "ss01", "kern", "calt";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--ember); color: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+
+  /* —— ATMOSPHERE: grain + ambient warm light —— */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.08  0 0 0 0 0.03  0 0 0 0.10 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+    z-index: 3;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 55% at 85% 0%, rgba(230, 140, 60, 0.28), transparent 62%),
+      radial-gradient(ellipse 70% 50% at 5% 100%, rgba(111, 29, 7, 0.18), transparent 62%);
+    z-index: 1;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* —— NAV / MASTHEAD —— */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: clamp(22px, 3vw, 34px);
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 14, "SOFT" 20;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .wordmark .sep {
+    width: 22px; height: 1px;
+    background: var(--ember);
+    opacity: 0.6;
+  }
+  .wordmark .edition {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .lang-toggle {
+    display: inline-flex;
+    gap: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .lang-toggle button {
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-mute);
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all .25s ease;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    min-height: 32px;
+  }
+  @media (hover: none), (max-width: 900px) {
+    .lang-toggle button {
+      padding: 12px 18px;
+      font-size: 11px;
+      min-height: 44px;
+      min-width: 48px;
+    }
+  }
+  .lang-toggle button + button { border-left: 0; }
+  .lang-toggle button.active {
+    background: var(--ember);
+    color: var(--bg);
+    border-color: var(--ember);
+  }
+  .lang-toggle button:hover:not(.active) {
+    color: var(--ink-soft);
+    border-color: var(--ink-mute);
+  }
+
+  /* —— ORGANIC RULES —— */
+  .hr {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(to right,
+      transparent 0%,
+      var(--rule) 8%,
+      rgba(199, 74, 21, 0.50) 50%,
+      var(--rule) 92%,
+      transparent 100%);
+    margin: 0;
+  }
+
+  /* —— HERO —— */
+  .hero {
+    padding: clamp(72px, 11vw, 160px) 0 clamp(48px, 7vw, 100px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(36px, 5vw, 72px);
+    position: relative;
+  }
+
+  /* page-load cascade — each element arrives in sequence */
+  .hero .eyebrow   { animation: stageInSoft 1.0s cubic-bezier(.2,.7,.2,1) .15s both; }
+  .hero .display .row:nth-child(1) { animation: stageIn 1.4s cubic-bezier(.2,.7,.2,1) .35s both; }
+  .hero .display .row:nth-child(2) { animation: stageIn 1.4s cubic-bezier(.2,.7,.2,1) .60s both; }
+  .hero .hero-lede { animation: stageInSoft 1.1s cubic-bezier(.2,.7,.2,1) .95s both; }
+  .hero .hero-meta { animation: stageInSoft 1.0s cubic-bezier(.2,.7,.2,1) 1.15s both; }
+  .hero .meniscus  { animation: stageInSoft 0.9s cubic-bezier(.2,.7,.2,1) 1.30s both; }
+  .nav             { animation: stageInSoft 0.9s cubic-bezier(.2,.7,.2,1) .05s both; }
+
+  /* meniscus curve draws itself */
+  .meniscus path {
+    stroke-dasharray: 2600;
+    stroke-dashoffset: 2600;
+    animation: drawStroke 2.4s cubic-bezier(.2,.7,.2,1) 1.40s forwards;
+  }
+  .meniscus path:nth-of-type(2) {
+    animation-delay: 1.70s;
+    animation-duration: 2.6s;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -10%; right: -15%;
+    width: 75%; height: 130%;
+    background: radial-gradient(ellipse at center,
+      rgba(230, 140, 60, 0.35) 0%,
+      rgba(224, 106, 42, 0.12) 35%,
+      transparent 72%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--ember);
+    box-shadow: 0 0 12px var(--ember);
+    animation: pulse 2.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.85); }
+  }
+
+  .display {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-weight: 300;
+    font-size: clamp(48px, 10.5vw, 168px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .display em {
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    background: linear-gradient(135deg, var(--ember-hi) 0%, var(--ember) 50%, var(--rust) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .display .row { display: block; }
+  .display .row + .row { margin-top: 0.02em; }
+
+  .hero-lede {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24;
+    font-size: clamp(20px, 2.1vw, 27px);
+    line-height: 1.4;
+    font-weight: 300;
+    max-width: 38ch;
+    color: var(--ink-soft);
+  }
+  .hero-lede em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 12px;
+  }
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-meta span::before {
+    content: "";
+    width: 26px; height: 1px;
+    background: var(--ember);
+    opacity: 0.5;
+    display: inline-block;
+  }
+  .hero-meta span:first-child::before { display: none; }
+
+  /* meniscus divider - liquid curve */
+  .meniscus {
+    width: 100%;
+    height: 24px;
+    margin: clamp(32px, 5vw, 56px) 0 0;
+    display: block;
+  }
+
+  /* —— SECTION SCAFFOLDING —— */
+  section {
+    padding: clamp(72px, 9vw, 130px) 0;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: clamp(30px, 4vw, 56px);
+  }
+
+  h2.section-h {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+    font-weight: 300;
+    font-size: clamp(38px, 6.2vw, 92px);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    margin: 0 0 clamp(30px, 3.8vw, 60px);
+    max-width: 15ch;
+    color: var(--ink);
+  }
+  h2.section-h em {
+    font-style: italic;
+    font-variation-settings: "opsz" 96, "SOFT" 100;
+    background: linear-gradient(135deg, var(--ember-hi) 0%, var(--ember) 60%, var(--rust) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* —— POSITIONING / SELECTIVE BY DESIGN —— */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 84px);
+    align-items: start;
+  }
+  .pull {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 36;
+    font-weight: 300;
+    font-size: clamp(22px, 2.7vw, 36px);
+    line-height: 1.28;
+    letter-spacing: -0.015em;
+  }
+  .pull.muted {
+    color: var(--ink-mute);
+    text-decoration: line-through;
+    text-decoration-color: rgba(111, 29, 7, 0.55);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+  }
+  .pull strong {
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .pull em {
+    font-style: italic;
+    color: var(--ember-hi);
+  }
+
+  .bridge {
+    margin-top: clamp(44px, 5vw, 76px);
+    padding-top: clamp(32px, 4vw, 54px);
+    border-top: 1px solid var(--rule);
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 60ch;
+    color: var(--ink-soft);
+  }
+  .bridge em { font-style: italic; color: var(--ink); }
+
+  /* —— THE MODEL / SIX SLOTS —— */
+  .slots-frame {
+    position: relative;
+  }
+  .slots-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .slots-head .availability {
+    color: var(--ember);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .slots-head .availability::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--ember);
+    box-shadow: 0 0 10px var(--ember);
+  }
+
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    background-color: var(--bg-elev);
+  }
+  .slot {
+    background: var(--bg-card);
+    padding: clamp(26px, 2.8vw, 42px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+    transition: background .5s ease, transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  /* liquid fill that rises on hover */
+  .slot::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 0%;
+    background: linear-gradient(to top,
+      rgba(199, 74, 21, 0.32) 0%,
+      rgba(224, 106, 42, 0.14) 55%,
+      transparent 100%);
+    transition: height .6s cubic-bezier(.2,.7,.2,1);
+    pointer-events: none;
+  }
+  .slot:hover { background: #e6cd9a; transform: translateY(-3px); }
+  .slot:hover::before { height: 64%; }
+
+  .slot-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .slot-num {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--ember);
+  }
+  .slot-status {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ember);
+    border: 1px solid rgba(199, 74, 21, 0.55);
+    padding: 4px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .slot-cat {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .slot-name {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 60, "SOFT" 30;
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin-top: auto;
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+  }
+  .slot-name em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ember-hi);
+  }
+
+  .slots-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 28px;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    flex-wrap: wrap;
+  }
+  .slots-foot em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-variation-settings: "opsz" 24, "SOFT" 40;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  /* —— ROOMS / STATS —— */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background-color: var(--bg-elev);
+  }
+  .stat {
+    background: var(--bg-card);
+    padding: clamp(30px, 3.4vw, 52px) clamp(18px, 2.2vw, 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  .stat::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--ember), transparent);
+    opacity: 0.55;
+  }
+  .stat-value {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: clamp(38px, 4.8vw, 68px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .stat-value em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    background: linear-gradient(135deg, var(--ember-hi), var(--rust));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .access-note {
+    margin-top: clamp(28px, 3.5vw, 44px);
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24;
+    font-size: clamp(19px, 2vw, 25px);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 60ch;
+    color: var(--ink-soft);
+  }
+  .access-note em { font-style: italic; color: var(--ink); }
+
+  /* —— CREDENTIALS / PROVENANCE LEDGER —— */
+  .ledger-head {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .creds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 4.5vw, 84px);
+  }
+  .cred-col h3 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin: 0 0 22px;
+    font-weight: 500;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(199, 74, 21, 0.50);
+  }
+  .cred-item {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: baseline;
+    transition: padding .3s ease, background .3s ease;
+  }
+  .cred-item:last-child { border-bottom: 0; }
+  .cred-item:hover {
+    padding-left: 8px;
+    background: linear-gradient(to right, rgba(199, 74, 21, 0.12), transparent 60%);
+  }
+
+  .cred-item .primary {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24, "SOFT" 30;
+    font-size: clamp(18px, 1.8vw, 23px);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .cred-item .primary em {
+    font-style: italic;
+    color: var(--ember);
+    font-weight: 300;
+    font-size: 0.88em;
+  }
+  .cred-item .primary small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 8px;
+    font-weight: 400;
+  }
+  .cred-item .date {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  /* —— WAYS TO WORK / TERMS —— */
+  .ways {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    background-color: var(--bg-elev);
+  }
+  .way {
+    background: var(--bg-card);
+    padding: clamp(32px, 3.2vw, 52px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: background .4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .way::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(to right, var(--ember-lo), var(--ember), var(--ember-hi));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .way:hover { background: #e6cd9a; }
+  .way:hover::before { transform: scaleX(1); }
+
+  .way-num {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 36, "SOFT" 40;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--ember);
+    letter-spacing: 0.02em;
+  }
+  .way-title {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 60, "SOFT" 40;
+    font-size: clamp(26px, 2.6vw, 38px);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+  }
+  .way-title em {
+    font-style: italic;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+  }
+  .way-body {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 40ch;
+    font-family: var(--sans);
+  }
+  .way-tag {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ember);
+  }
+
+  /* —— CONTACT —— */
+  .contact {
+    padding: clamp(88px, 11vw, 170px) 0 clamp(64px, 8vw, 120px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 84px);
+    align-items: end;
+    position: relative;
+  }
+  .contact::before {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 95%; height: 65%;
+    background: radial-gradient(ellipse at bottom,
+      rgba(199, 74, 21, 0.22) 0%,
+      rgba(230, 140, 60, 0.10) 40%,
+      transparent 68%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .contact-head {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: clamp(54px, 9vw, 132px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    font-weight: 300;
+    margin: 0;
+    color: var(--ink);
+  }
+  .contact-head em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    background: linear-gradient(135deg, var(--ember-hi) 0%, var(--ember) 50%, var(--rust) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .contact-body {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .contact-lede {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24;
+    font-size: clamp(18px, 1.8vw, 23px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .contact-lede em { font-style: italic; color: var(--ink); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .contact-links a {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 36, "SOFT" 30;
+    font-size: clamp(21px, 2.2vw, 30px);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    transition: color .25s ease;
+    color: var(--ink);
+  }
+  .contact-links a::after {
+    content: "→";
+    font-family: var(--mono);
+    font-weight: 400;
+    color: var(--ember);
+    transition: transform .3s ease;
+  }
+  .contact-links a:hover { color: var(--ember); }
+  .contact-links a:hover::after { transform: translateX(8px); }
+
+  .contact-links .kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 4px;
+  }
+
+  /* —— FOOTER —— */
+  footer {
+    padding: 36px 0 52px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--rule);
+  }
+  footer em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+
+  /* —— REVEAL ANIMATIONS —— */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Grid reveals: parent stays put, children stagger in */
+  .slots.reveal,
+  .stats.reveal,
+  .ways.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .slots.reveal > *,
+  .stats.reveal > *,
+  .ways.reveal > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity .9s cubic-bezier(.2,.7,.2,1),
+      transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .slots.reveal.in > *,
+  .stats.reveal.in > *,
+  .ways.reveal.in > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* stagger steps */
+  .slots.reveal > *:nth-child(1),
+  .stats.reveal > *:nth-child(1),
+  .ways.reveal  > *:nth-child(1) { transition-delay: 0ms;   }
+  .slots.reveal > *:nth-child(2),
+  .stats.reveal > *:nth-child(2),
+  .ways.reveal  > *:nth-child(2) { transition-delay: 90ms;  }
+  .slots.reveal > *:nth-child(3),
+  .stats.reveal > *:nth-child(3),
+  .ways.reveal  > *:nth-child(3) { transition-delay: 180ms; }
+  .slots.reveal > *:nth-child(4),
+  .stats.reveal > *:nth-child(4) { transition-delay: 270ms; }
+  .slots.reveal > *:nth-child(5) { transition-delay: 360ms; }
+  .slots.reveal > *:nth-child(6) { transition-delay: 450ms; }
+
+  /* —— CINEMATIC IMAGE BREAK —— */
+  .cinematic {
+    position: relative;
+    margin: clamp(56px, 8vw, 110px) 0 0;
+    overflow: hidden;
+    background: var(--rust-deep);
+    box-shadow: var(--shadow);
+  }
+  .cinematic img {
+    display: block;
+    width: 100%;
+    height: clamp(340px, 58vw, 640px);
+    object-fit: cover;
+    object-position: center 32%;
+    filter: saturate(1.04) contrast(1.02);
+    transform: scale(1.10) translate3d(0, 0, 0);
+    will-change: transform;
+    transition: filter .6s ease;
+  }
+  .cinematic:hover img { filter: saturate(1.08) contrast(1.04); }
+  /* warm amber grade overlay to tie photo to palette */
+  .cinematic::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, rgba(74, 19, 5, 0.35) 0%, transparent 35%),
+      linear-gradient(135deg, transparent 55%, rgba(199, 74, 21, 0.10) 100%);
+    pointer-events: none;
+  }
+  .cinematic-plate {
+    position: absolute;
+    top: clamp(18px, 2.5vw, 30px);
+    left: clamp(20px, 3vw, 36px);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+  }
+  .cinematic-plate::before {
+    content: "";
+    width: 22px; height: 1px;
+    background: var(--ember-hi);
+  }
+  .cinematic-caption {
+    position: absolute;
+    bottom: clamp(18px, 2.5vw, 30px);
+    right: clamp(20px, 3vw, 36px);
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 24, "SOFT" 40;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(14px, 1.3vw, 18px);
+    color: var(--bg);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+    letter-spacing: 0.01em;
+    z-index: 2;
+    max-width: 44ch;
+    text-align: right;
+    line-height: 1.3;
+  }
+
+  /* —— CREDENTIALS HEADER SPLIT (image + headline side by side) —— */
+  .cred-header {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: end;
+    margin-bottom: clamp(34px, 4.5vw, 60px);
+  }
+  .cred-header .section-h { margin-bottom: 0; }
+  .cred-figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--shadow);
+  }
+  .cred-figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    filter: saturate(1.04) contrast(1.02);
+    transform: scale(1.02);
+    transition: transform 1.6s cubic-bezier(.2,.7,.2,1), filter .6s ease;
+    will-change: transform;
+  }
+  .cred-figure:hover img { transform: scale(1.06); filter: saturate(1.08) contrast(1.04); }
+  .cred-figure::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, transparent 60%, rgba(74, 19, 5, 0.18) 100%);
+    pointer-events: none;
+  }
+  .cred-figure-tag {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    right: 16px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  /* —— CONTACT PORTRAIT —— */
+  .contact {
+    /* override 2-col: now portrait | text */
+    grid-template-columns: 0.85fr 1fr;
+  }
+  .contact-portrait {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    max-height: 600px;
+    box-shadow: var(--shadow);
+    align-self: end;
+  }
+  .contact-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: saturate(1.02) contrast(1.02);
+    transform: scale(1.02);
+    transition: transform 1.6s cubic-bezier(.2,.7,.2,1), filter .6s ease;
+    will-change: transform;
+  }
+  .contact-portrait:hover img { transform: scale(1.06); }
+  .contact-portrait::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 55%, rgba(74, 19, 5, 0.28) 100%);
+    pointer-events: none;
+  }
+  .contact-portrait-tag {
+    position: absolute;
+    bottom: 16px;
+    left: 18px;
+    right: 18px;
+    z-index: 2;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(22px, 3vw, 40px);
+  }
+
+  /* —— RESPONSIVE —— */
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; gap: 28px; }
+    .slots { grid-template-columns: 1fr 1fr; }
+    .ways { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .creds { grid-template-columns: 1fr; }
+    .cred-header { grid-template-columns: 1fr; gap: 28px; align-items: start; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-portrait {
+      max-width: 440px;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      margin: 0 auto;
+    }
+    .hero { padding-top: 56px; }
+    .cinematic img { height: clamp(280px, 60vw, 440px); }
+    .cinematic-caption { max-width: 28ch; font-size: 13px; }
+    /* reduced slot min-height — 6 cards shouldn't be 1300px of scroll */
+    .slot { min-height: 170px; }
+    .way  { padding: clamp(26px, 3vw, 40px); }
+  }
+  @media (max-width: 560px) {
+    .slots { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hero-meta { gap: 6px 18px; }
+    .wordmark .edition { display: none; }
+    .cinematic-caption { display: none; }
+    /* even shorter slots in single-col tower */
+    .slot { min-height: 150px; padding: 22px 22px 26px; gap: 10px; }
+    .slot-name { font-size: 24px; }
+    section { padding: clamp(56px, 10vw, 90px) 0; }
+    footer { padding: 24px 0 36px; gap: 10px; }
+  }
+
+  /* —— TAP FEEDBACK (touch devices without hover) —— */
+  @media (hover: none) {
+    .slot:active {
+      background: #e6cd9a;
+      transform: translateY(-1px);
+    }
+    .slot:active::before { height: 50%; }
+    .way:active { background: #e6cd9a; }
+    .way:active::before { transform: scaleX(1); }
+    .contact-links a:active { color: var(--ember); }
+    .contact-links a:active::after { transform: translateX(4px); }
+    .cred-item:active {
+      padding-left: 8px;
+      background: linear-gradient(to right, rgba(199, 74, 21, 0.12), transparent 60%);
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- ───────────────── NAV / MASTHEAD ───────────────── -->
+  <nav class="nav">
+    <div class="wordmark">
+      <span>Samuel <em style="font-style:italic; font-variation-settings: 'opsz' 14, 'SOFT' 100;">Slaughter</em></span>
+    </div>
+    <div class="lang-toggle" role="tablist" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" class="active" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </nav>
+
+  <!-- ───────────────── HERO ───────────────── -->
+  <header class="hero">
+    <div class="eyebrow">
+      <span class="dot" aria-hidden="true"></span>
+      <span data-en="Berlin · DACH · Luxury Hospitality" data-de="Berlin · DACH · Luxus-Hotellerie">Berlin · DACH · Luxus-Hotellerie</span>
+    </div>
+
+    <h1 class="display">
+      <span class="row" data-en="Five-star palate." data-de="Fünf-Sterne-Gaumen.">Fünf-Sterne-Gaumen.</span>
+      <span class="row"><em data-en="Street-level hustle." data-de="Straßen-Hustle.">Straßen-Hustle.</em></span>
+    </h1>
+
+    <p class="hero-lede" data-en="A personal brand ambassador and drinks strategist placing great producers into the <em>rooms that matter</em> — one category at a time." data-de="Persönlicher Markenbotschafter und Drinks-Stratege, der große Produzenten in die <em>richtigen Räume</em> bringt — eine Kategorie nach der anderen.">Persönlicher Markenbotschafter und Drinks-Stratege, der große Produzenten in die <em>richtigen Räume</em> bringt — eine Kategorie nach der anderen.</p>
+
+    <div class="hero-meta">
+      <span data-en="Based in Berlin" data-de="In Berlin ansässig">In Berlin ansässig</span>
+      <span data-en="Bilingual EN / DE" data-de="Zweisprachig EN / DE">Zweisprachig EN / DE</span>
+      <span>WSET Level 3</span>
+    </div>
+
+    <!-- meniscus / liquid curve divider -->
+    <svg class="meniscus" viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="men" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#c74a15" stop-opacity="0"/>
+          <stop offset="20%" stop-color="#c74a15" stop-opacity="0.35"/>
+          <stop offset="50%" stop-color="#e06a2a" stop-opacity="0.9"/>
+          <stop offset="80%" stop-color="#c74a15" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#c74a15" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,12 Q300,2 600,12 T1200,12" fill="none" stroke="url(#men)" stroke-width="1"/>
+      <path d="M0,15 Q300,6 600,15 T1200,15" fill="none" stroke="url(#men)" stroke-width="0.5" opacity="0.5"/>
+    </svg>
+  </header>
+
+  <hr class="hr">
+
+  <!-- ───────────────── 01 POSITIONING ───────────────── -->
+  <section id="positioning">
+    <div class="section-label">
+      <span data-en="Positioning" data-de="Positionierung">Positionierung</span>
+    </div>
+
+    <h2 class="section-h reveal">
+      <span data-en="Selective, " data-de="Selektiv, ">Selektiv, </span><em data-en="by design." data-de="aus Prinzip.">aus Prinzip.</em>
+    </h2>
+
+    <div class="split">
+      <p class="pull muted reveal" data-en="Scale is a different game. Hundreds of SKUs, thousands of accounts, breadth by design." data-de="Skalierung ist ein anderes Spiel. Hunderte SKUs, tausende Accounts, Breite aus Prinzip.">Skalierung ist ein anderes Spiel. Hunderte SKUs, tausende Accounts, Breite aus Prinzip.</p>
+      <p class="pull reveal" style="transition-delay:.1s" data-en="I place <strong>six products</strong>, with <em>surgical precision</em>, into rooms where they actually belong." data-de="Ich platziere <strong>sechs Produkte</strong> mit <em>chirurgischer Präzision</em> in Räumen, in die sie wirklich gehören.">Ich platziere <strong>sechs Produkte</strong> mit <em>chirurgischer Präzision</em> in Räumen, in die sie wirklich gehören.</p>
+    </div>
+
+    <p class="bridge reveal" data-en="The bridge between producers making <em>incredible liquid</em> and the luxury hotels, restaurants and bars where it belongs. An independent operator with five-star credentials — personal representation, done properly." data-de="Die Brücke zwischen Produzenten, die <em>herausragende Produkte</em> herstellen, und den Luxushotels, Restaurants und Bars, wo sie hingehören. Ein unabhängiger Operator mit Fünf-Sterne-Credentials — persönliche Vertretung, richtig gemacht.">Die Brücke zwischen Produzenten, die <em>herausragende Produkte</em> herstellen, und den Luxushotels, Restaurants und Bars, wo sie hingehören. Ein unabhängiger Operator mit Fünf-Sterne-Credentials — persönliche Vertretung, richtig gemacht.</p>
+
+    <figure class="cinematic reveal">
+      <img src="images/sammy-pour.jpg" alt="Samuel Slaughter behind the bar, pouring gin from height">
+      <span class="cinematic-plate">2024</span>
+      <figcaption class="cinematic-caption" data-en="Behind the bar — <em>in the room where it lands.</em>" data-de="Hinter der Bar — <em>im Raum, wo es landet.</em>">Hinter der Bar — <em>im Raum, wo es landet.</em></figcaption>
+    </figure>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ───────────────── 02 THE MODEL / SIX SLOTS ───────────────── -->
+  <section id="model">
+    <div class="section-label">
+      <span data-en="The Model" data-de="Das Modell">Das Modell</span>
+    </div>
+
+    <h2 class="section-h reveal">
+      <span data-en="Six slots. " data-de="Sechs Plätze. ">Sechs Plätze. </span><em data-en="No conflicts." data-de="Keine Konflikte.">Keine Konflikte.</em>
+    </h2>
+
+    <p class="bridge reveal" style="margin-top:0; border-top: 0; padding-top: 0; margin-bottom: clamp(40px, 5vw, 60px);" data-en="A maximum of six brand partnerships at any time — <em>one partner per category.</em> Every producer I represent gets undivided attention in their lane. No overlap. No divided loyalty. No excuses." data-de="Maximal sechs Markenpartnerschaften gleichzeitig — <em>ein Partner pro Kategorie.</em> Jeder Produzent, den ich vertrete, bekommt volle Aufmerksamkeit in seinem Bereich. Keine Überschneidung. Keine geteilte Loyalität. Keine Ausreden.">Maximal sechs Markenpartnerschaften gleichzeitig — <em>ein Partner pro Kategorie.</em> Jeder Produzent, den ich vertrete, bekommt volle Aufmerksamkeit in seinem Bereich. Keine Überschneidung. Keine geteilte Loyalität. Keine Ausreden.</p>
+
+    <div class="slots-head reveal">
+      <span data-en="Category ledger · 2026 slate" data-de="Kategorie-Verzeichnis · 2026er Line-up">Kategorie-Verzeichnis · 2026er Line-up</span>
+      <span class="availability" data-en="6 of 6 open" data-de="6 von 6 offen">6 von 6 offen</span>
+    </div>
+
+    <div class="slots reveal">
+      <div class="slot">
+        <div class="slot-head">
+          <span class="slot-num">i.</span>
+          <span class="slot-status" data-en="Open · 2026" data-de="Offen · 2026">Offen · 2026</span>
+        </div>
+        <span class="slot-cat" data-en="Wine" data-de="Wein">Wein</span>
+        <div class="slot-name"><em data-en="Old World" data-de="Alte Welt">Alte Welt</em></div>
+      </div>
+      <div class="slot">
+        <div class="slot-head">
+          <span class="slot-num">ii.</span>
+          <span class="slot-status" data-en="Open · 2026" data-de="Offen · 2026">Offen · 2026</span>
+        </div>
+        <span class="slot-cat" data-en="Wine" data-de="Wein">Wein</span>
+        <div class="slot-name"><em data-en="New World" data-de="Neue Welt">Neue Welt</em></div>
+      </div>
+      <div class="slot">
+        <div class="slot-head">
+          <span class="slot-num">iii.</span>
+          <span class="slot-status" data-en="Open · 2026" data-de="Offen · 2026">Offen · 2026</span>
+        </div>
+        <span class="slot-cat" data-en="Sparkling" data-de="Schaumwein">Schaumwein</span>
+        <div class="slot-name"><em data-en="Champagne &amp; fizz" data-de="Champagner &amp; Schaumwein">Champagner &amp; Schaumwein</em></div>
+      </div>
+      <div class="slot">
+        <div class="slot-head">
+          <span class="slot-num">iv.</span>
+          <span class="slot-status" data-en="Open · 2026" data-de="Offen · 2026">Offen · 2026</span>
+        </div>
+        <span class="slot-cat" data-en="Spirit" data-de="Spirituose">Spirituose</span>
+        <div class="slot-name"><em>Tequila / Mezcal</em></div>
+      </div>
+      <div class="slot">
+        <div class="slot-head">
+          <span class="slot-num">v.</span>
+          <span class="slot-status" data-en="Open · 2026" data-de="Offen · 2026">Offen · 2026</span>
+        </div>
+        <span class="slot-cat" data-en="Spirit" data-de="Spirituose">Spirituose</span>
+        <div class="slot-name"><em>Whiskey / Rum</em></div>
+      </div>
+      <div class="slot">
+        <div class="slot-head">
+          <span class="slot-num">vi.</span>
+          <span class="slot-status" data-en="Open · 2026" data-de="Offen · 2026">Offen · 2026</span>
+        </div>
+        <span class="slot-cat">Low / No</span>
+        <div class="slot-name"><em data-en="Non-alcoholic" data-de="Alkoholfrei">Alkoholfrei</em></div>
+      </div>
+    </div>
+
+    <div class="slots-foot reveal">
+      <span data-en="Producers buy access." data-de="Produzenten kaufen Zugang.">Produzenten kaufen Zugang.</span>
+      <em data-en="Venues buy curation." data-de="Venues kaufen Kuration.">Venues kaufen Kuration.</em>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ───────────────── 03 THE ROOMS / STATS ───────────────── -->
+  <section id="rooms">
+    <div class="section-label">
+      <span data-en="The Rooms" data-de="Die Räume">Die Räume</span>
+    </div>
+
+    <h2 class="section-h reveal">
+      <span data-en="Where " data-de="Wo ">Wo </span><em data-en="it lands." data-de="es landet.">es landet.</em>
+    </h2>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-value">20<em>–</em>30</div>
+        <div class="stat-label" data-en="Venue network" data-de="Venue-Netzwerk">Venue-Netzwerk</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">5<em>★</em></div>
+        <div class="stat-label" data-en="Hotel standard" data-de="Hotel-Standard">Hotel-Standard</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">10<em>+</em></div>
+        <div class="stat-label" data-en="Years in luxury F&amp;B" data-de="Jahre in Luxus-F&amp;B">Jahre in Luxus-F&amp;B</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value"><em>DACH</em></div>
+        <div class="stat-label" data-en="Regional focus" data-de="Regionaler Fokus">Regionaler Fokus</div>
+      </div>
+    </div>
+
+    <p class="access-note reveal" style="transition-delay:.15s" data-en="Berlin-based, DACH-embedded. The network is tight on purpose — <em>five-star hotel bars, fine dining, premium cocktail rooms.</em> Quality over volume. Rooms where a placement moves a producer's story, not just a case." data-de="In Berlin ansässig, in der DACH-Region verankert. Das Netzwerk ist bewusst klein gehalten — <em>Fünf-Sterne-Hotelbars, Fine Dining, Premium-Cocktailräume.</em> Qualität vor Menge. Räume, in denen eine Listung die Geschichte eines Produzenten bewegt, nicht nur einen Karton.">In Berlin ansässig, in der DACH-Region verankert. Das Netzwerk ist bewusst klein gehalten — <em>Fünf-Sterne-Hotelbars, Fine Dining, Premium-Cocktailräume.</em> Qualität vor Menge. Räume, in denen eine Listung die Geschichte eines Produzenten bewegt, nicht nur einen Karton.</p>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ───────────────── 04 CREDENTIALS / PROVENANCE ───────────────── -->
+  <section id="credentials">
+    <div class="section-label">
+      <span data-en="Credentials" data-de="Qualifikationen">Qualifikationen</span>
+    </div>
+
+    <div class="cred-header">
+      <h2 class="section-h reveal">
+        <span data-en="Trained " data-de="Trainiert ">Trainiert </span><em data-en="where it counts." data-de="wo es zählt.">wo es zählt.</em>
+      </h2>
+      <figure class="cred-figure reveal" style="transition-delay:.1s">
+        <img src="images/sammy-craft.jpg" alt="Samuel Slaughter pouring through a jigger at the bar">
+        <figcaption class="cred-figure-tag">
+          <span>Regent Berlin</span>
+          <span>2024</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="ledger-head reveal">
+      <span data-en="Provenance ledger" data-de="Herkunfts-Verzeichnis">Herkunfts-Verzeichnis</span>
+      <span>2015 — 2026</span>
+    </div>
+
+    <div class="creds">
+      <div class="cred-col reveal">
+        <h3 data-en="Current &amp; recent" data-de="Aktuell &amp; jüngst">Aktuell &amp; jüngst</h3>
+        <div class="cred-item">
+          <div class="primary">
+            Das Stue <em data-en="/ Berlin" data-de="/ Berlin">/ Berlin</em>
+            <small data-en="Food &amp; Beverage Manager" data-de="Food &amp; Beverage Manager">Food &amp; Beverage Manager</small>
+          </div>
+          <div class="date">2025 —</div>
+        </div>
+        <div class="cred-item">
+          <div class="primary">
+            Regent Berlin <em>/ IHG</em>
+            <small data-en="Outlets Manager · Acting F&amp;B Manager" data-de="Outlets Manager · Kommiss. F&amp;B Manager">Outlets Manager · Kommiss. F&amp;B Manager</small>
+          </div>
+          <div class="date">2022 – 2025</div>
+        </div>
+        <div class="cred-item">
+          <div class="primary">
+            Grand Hyatt Berlin
+            <small data-en="Hotelfachmann · vocational training" data-de="Hotelfachmann · Ausbildung">Hotelfachmann · Ausbildung</small>
+          </div>
+          <div class="date">2015 – 2017</div>
+        </div>
+      </div>
+
+      <div class="cred-col reveal" style="transition-delay:.1s">
+        <h3 data-en="London fine dining" data-de="Londoner Fine Dining">Londoner Fine Dining</h3>
+        <div class="cred-item">
+          <div class="primary">
+            Upstairs at Trinity <em data-en="/ Michelin" data-de="/ Michelin">/ Michelin</em>
+            <small data-en="Restaurant Manager" data-de="Restaurant Manager">Restaurant Manager</small>
+          </div>
+          <div class="date">2019 – 2020</div>
+        </div>
+        <div class="cred-item">
+          <div class="primary">
+            The Paternoster <em>/ City</em>
+            <small data-en="Assistant Manager" data-de="Assistant Manager">Assistant Manager</small>
+          </div>
+          <div class="date">2020 – 2022</div>
+        </div>
+        <div class="cred-item">
+          <div class="primary">
+            Taka Mayfair
+            <small data-en="Assistant Restaurant Manager" data-de="Assistant Restaurant Manager">Assistant Restaurant Manager</small>
+          </div>
+          <div class="date">2019</div>
+        </div>
+        <div class="cred-item">
+          <div class="primary">
+            WSET Level 3 <em data-en="/ Wine" data-de="/ Wein">/ Wein</em>
+            <small data-en="Distinction credentials" data-de="Qualifikation">Qualifikation</small>
+          </div>
+          <div class="date">2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ───────────────── 05 WAYS TO WORK / TERMS ───────────────── -->
+  <section id="ways">
+    <div class="section-label">
+      <span data-en="Terms of Engagement" data-de="Zusammenarbeit">Zusammenarbeit</span>
+    </div>
+
+    <h2 class="section-h reveal">
+      <span data-en="Three " data-de="Drei ">Drei </span><em data-en="ways in." data-de="Wege rein.">Wege rein.</em>
+    </h2>
+
+    <div class="ways reveal">
+      <div class="way">
+        <span class="way-num">i.</span>
+        <div class="way-title"><em data-en="Partnership." data-de="Partnerschaft.">Partnerschaft.</em></div>
+        <p class="way-body" data-en="Hybrid retainer plus commission, per brand. The long view. Full placement, ongoing activation, venue education, and share-of-pour built over seasons — not single dinners." data-de="Hybrides Retainer plus Provision, pro Marke. Die lange Perspektive. Vollständige Platzierung, laufende Aktivierung, Venue-Schulung und Share-of-Pour über Saisons aufgebaut — nicht nur einzelne Dinner.">Hybrides Retainer plus Provision, pro Marke. Die lange Perspektive. Vollständige Platzierung, laufende Aktivierung, Venue-Schulung und Share-of-Pour über Saisons aufgebaut — nicht nur einzelne Dinner.</p>
+        <div class="way-tag" data-en="One of six slots" data-de="Einer von sechs Plätzen">Einer von sechs Plätzen</div>
+      </div>
+
+      <div class="way">
+        <span class="way-num">ii.</span>
+        <div class="way-title"><em data-en="Activation." data-de="Aktivierung.">Aktivierung.</em></div>
+        <p class="way-body" data-en="Per-activation fee for pop-ups, guided tastings, pairing dinners, masterclass evenings, product launches. Concept to curtain, designed for the venue's audience — not a template." data-de="Pro-Aktivierung-Fee für Pop-ups, geführte Tastings, Pairing-Dinner, Masterclass-Abende, Produktlaunches. Vom Konzept bis zum Vorhang, zugeschnitten auf das Publikum der Venue — kein Template.">Pro-Aktivierung-Fee für Pop-ups, geführte Tastings, Pairing-Dinner, Masterclass-Abende, Produktlaunches. Vom Konzept bis zum Vorhang, zugeschnitten auf das Publikum der Venue — kein Template.</p>
+        <div class="way-tag" data-en="Per event" data-de="Pro Event">Pro Event</div>
+      </div>
+
+      <div class="way">
+        <span class="way-num">iii.</span>
+        <div class="way-title"><em data-en="Consultancy." data-de="Beratung.">Beratung.</em></div>
+        <p class="way-body" data-en="Day rate for menu builds, pricing strategy, beverage-program overhauls, and staff training. Sommelier-grade thinking translated into P&amp;L the F&amp;B director can defend." data-de="Tagessatz für Menü-Entwicklung, Preisstrategie, Beverage-Programm-Umbau und Team-Training. Sommelier-Denken übersetzt in ein P&amp;L, das der F&amp;B-Director verteidigen kann.">Tagessatz für Menü-Entwicklung, Preisstrategie, Beverage-Programm-Umbau und Team-Training. Sommelier-Denken übersetzt in ein P&amp;L, das der F&amp;B-Director verteidigen kann.</p>
+        <div class="way-tag" data-en="Day rate" data-de="Tagessatz">Tagessatz</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ───────────────── CONTACT ───────────────── -->
+  <section id="contact" class="contact">
+    <figure class="contact-portrait reveal">
+      <img src="images/sammy-portrait.jpg" alt="Samuel Slaughter portrait">
+      <figcaption class="contact-portrait-tag">
+        <span>Samuel L. Slaughter</span>
+        <span>Berlin · 2026</span>
+      </figcaption>
+    </figure>
+
+    <div class="contact-text">
+      <h2 class="contact-head reveal">
+        <span data-en="Let's " data-de="Lass uns ">Lass uns </span><em data-en="talk." data-de="reden.">reden.</em>
+      </h2>
+
+      <p class="contact-lede reveal" data-en="Currently open to conversations with <em>producers for the 2026 slate</em> and with venues building a beverage program worth talking about." data-de="Derzeit offen für Gespräche mit <em>Produzenten für das 2026er Line-up</em> und mit Venues, die ein Beverage-Programm aufbauen, über das man reden sollte.">Derzeit offen für Gespräche mit <em>Produzenten für das 2026er Line-up</em> und mit Venues, die ein Beverage-Programm aufbauen, über das man reden sollte.</p>
+
+      <div class="contact-links reveal" style="transition-delay:.12s">
+        <div>
+          <div class="kicker" data-en="Direct" data-de="Direkt">Direkt</div>
+          <a href="mailto:samuel.l.slaughter@gmail.com">samuel.l.slaughter@gmail.com</a>
+        </div>
+        <div>
+          <div class="kicker" data-en="Social" data-de="Social">Social</div>
+          <a href="https://www.linkedin.com/in/samuel-slaughter" target="_blank" rel="noopener">LinkedIn · in/samuel-slaughter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <footer>
+    <span>© Samuel L. Slaughter · Berlin · 2026</span>
+    <em data-en="Five-star palate. Street-level hustle." data-de="Fünf-Sterne-Gaumen. Straßen-Hustle.">Fünf-Sterne-Gaumen. Straßen-Hustle.</em>
+    <span data-en="Independent · no agency" data-de="Unabhängig · keine Agentur">Unabhängig · keine Agentur</span>
+  </footer>
+
+</div>
+
+<script>
+  // language toggle
+  const htmlEl = document.documentElement;
+  const buttons = document.querySelectorAll('.lang-toggle button');
+  const SAVED = 'samuel-lang';
+
+  function setLang(lang) {
+    htmlEl.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+    buttons.forEach(b => {
+      const active = b.dataset.lang === lang;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    try { localStorage.setItem(SAVED, lang); } catch(e){}
+  }
+
+  buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+  // restore saved
+  try {
+    const saved = localStorage.getItem(SAVED);
+    if (saved === 'de' || saved === 'en') setLang(saved);
+  } catch(e){}
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // —— PARALLAX on cinematic image ——
+  // disabled automatically for users who request reduced motion
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const parallaxTargets = Array.from(document.querySelectorAll('.cinematic img'));
+
+  if (!reduceMotion && parallaxTargets.length) {
+    let ticking = false;
+
+    function updateParallax() {
+      const vh = window.innerHeight;
+      parallaxTargets.forEach(img => {
+        const container = img.parentElement;
+        const rect = container.getBoundingClientRect();
+        // skip if offscreen
+        if (rect.bottom < -100 || rect.top > vh + 100) return;
+        // progress: -1 when container just entered bottom, +1 when it just left top
+        const midpoint = rect.top + rect.height / 2;
+        const progress = (midpoint - vh / 2) / (vh / 2 + rect.height / 2);
+        // translate opposite to scroll for slower-than-viewport feel
+        const shift = progress * -40;
+        img.style.transform = `scale(1.10) translate3d(0, ${shift.toFixed(2)}px, 0)`;
+      });
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick);
+    updateParallax();
+  }
+</script>
+
+</body></html>
